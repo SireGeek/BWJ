@@ -1,258 +1,187 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Happy Birthday Bransten 🎉</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Bransten!</title>
 <style>
-  :root{
-    --bg1: #0f172a;
-    --bg2: #0b1220;
-    --accent: #ffcc00;
-    --card: rgba(255,255,255,0.03);
-    --glass: rgba(255,255,255,0.04);
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
   }
-  *{box-sizing: border-box}
-  html,body{height:100%}
-  body{
-    margin:0;
-    font-family: Inter, "Segoe UI", system-ui, -apple-system, Roboto, "Helvetica Neue", Arial;
-    background: radial-gradient(1200px 600px at 10% 10%, rgba(255,160,80,0.06), transparent),
-                linear-gradient(180deg, var(--bg1), var(--bg2));
-    color:#fff;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    padding:24px;
+  body {
+    background: radial-gradient(circle at center, #000, #050505);
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Comic Sans MS', cursive;
   }
-  .stage{
-    width:100%;
-    max-width:980px;
-    border-radius:18px;
-    padding:42px;
-    background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-    box-shadow: 0 12px 40px rgba(2,6,23,0.6), inset 0 1px 0 rgba(255,255,255,0.02);
-    position:relative;
-    overflow: visible;
+
+  h1 {
+    color: #fff;
+    font-size: 3.5em;
+    text-shadow: 0 0 10px #ff0, 0 0 25px #ff00ff, 0 0 50px #00ffff;
+    animation: pulseText 2s infinite ease-in-out;
   }
-  .title{
-    font-size: clamp(28px, 4.8vw, 56px);
-    text-align:center;
-    letter-spacing: -0.02em;
-    margin:0 0 12px;
-    line-height:1;
-    transform-origin:center;
-    animation: floatTitle 4s ease-in-out infinite;
-    text-shadow: 0 8px 30px rgba(255,140,60,0.14);
+
+  @keyframes pulseText {
+    0%, 100% { text-shadow: 0 0 20px #ff00ff, 0 0 50px #00ffff; transform: scale(1);}
+    50% { text-shadow: 0 0 40px #ffff00, 0 0 80px #ff00ff; transform: scale(1.1);}
   }
-  .subtitle{
-    text-align:center;
-    margin:0 0 28px;
-    color: #cbd5e1;
-    font-weight:500;
-    letter-spacing: 0.02em;
-  }
-  .spark{
-    display:inline-block;
-    padding: 6px 12px;
-    border-radius: 12px;
-    background: linear-gradient(90deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
-    box-shadow: 0 6px 22px rgba(255,140,60,0.06);
-    animation: popGlow 1.8s infinite;
-  }
-  @keyframes floatTitle{
-    0%{transform: translateY(0) rotate(0deg) scale(1)}
-    50%{transform: translateY(-6px) rotate(-1deg) scale(1.02)}
-    100%{transform: translateY(0) rotate(0deg) scale(1)}
-  }
-  @keyframes popGlow{
-    0%{filter: drop-shadow(0 0 0 rgba(255,200,60,0))}
-    40%{filter: drop-shadow(0 0 30px rgba(255,190,50,0.18))}
-    100%{filter: drop-shadow(0 0 0 rgba(255,200,60,0))}
-  }
-  .scene{
-    display:flex;
-    gap:28px;
-    align-items:center;
-    justify-content:center;
-    flex-wrap:wrap;
-    margin-top:6px;
-  }
-  .cake{
-    width:180px;
-    height:140px;
-    position:relative;
-    display:flex;
-    align-items:flex-end;
-    justify-content:center;
-  }
-  .cake .layer{
+
+  .cake {
+    position: relative;
     width: 160px;
-    height:40px;
-    border-radius: 14px;
-    background: linear-gradient(180deg,#ffd7a8,#ffb86b);
-    box-shadow: 0 8px 24px rgba(0,0,0,0.45);
-    position:relative;
-    margin-bottom:6px;
+    height: 160px;
+    margin-top: 20px;
   }
-  .cake .layer.top{
-    width:140px;
-    height:38px;
-    background: linear-gradient(180deg,#ffeedd,#ffd1a6);
-    z-index:2;
-    margin-bottom: -6px;
-  }
-  .icing{
-    position:absolute;
-    left:50%;
-    transform:translateX(-50%);
-    top:-18px;
-    width:100%;
-    height:18px;
-    background: repeating-linear-gradient(90deg, rgba(255,255,255,0.9) 0 6px, rgba(255,255,255,0.85) 6px 12px);
-    border-radius:10px;
-    mix-blend-mode:overlay;
-    opacity:0.9;
-  }
-  .candles{
-    position:absolute;
-    top:-26px;
-    display:flex;
-    gap:10px;
-    z-index:6;
-  }
-  .candle{
-    width:8px;
-    height:28px;
-    background: linear-gradient(180deg,#fff7e6,#ffd6a6);
-    border-radius:3px;
-    position:relative;
-    transform-origin:center bottom;
-    animation: candleSway 3.2s ease-in-out infinite;
-  }
-  .candle:nth-child(2){animation-delay:0.25s}
-  .candle:nth-child(3){animation-delay:0.55s}
-  .flame{
-    width:12px;
-    height:16px;
-    position:absolute;
-    left:50%;
-    transform:translateX(-50%) translateY(-8px);
-    top:-12px;
-    border-radius:50% 50% 50% 50% / 60% 60% 40% 40%;
-    background: radial-gradient(circle at 35% 30%, #fff 0 6%, #ffd56b 7% 40%, #ff6b2a 55% 100%);
-    filter: blur(0.6px);
-    animation: flicker 0.18s infinite;
-    transform-origin: center bottom;
-  }
-  @keyframes candleSway{
-    0%{transform: rotate(0)}
-    50%{transform: rotate(-3deg)}
-    100%{transform: rotate(0)}
-  }
-  @keyframes flicker{
-    0%{transform: translateY(-8px) scaleY(1)}
-    50%{transform: translateY(-10px) scaleY(1.05)}
-    100%{transform: translateY(-8px) scaleY(1)}
-  }
-  .balloon{
-    width:56px;
-    height:74px;
-    border-radius: 50% 50% 45% 45%;
+
+  .layer {
     position: absolute;
-    bottom:24px;
-    display:block;
-    transform-origin:center bottom;
-    animation: floatBalloon 6s ease-in-out infinite;
-    box-shadow: 0 12px 28px rgba(2,6,23,0.6);
+    bottom: 0;
+    width: 100%;
+    border-radius: 20px;
+    box-shadow: 0 0 20px rgba(255,255,255,0.3);
   }
-  .balloon:after{
-    content:"";
-    position:absolute;
-    left:50%;
-    bottom:-18px;
-    width:2px;
-    height:22px;
-    background: linear-gradient(180deg, rgba(255,255,255,0.4), rgba(0,0,0,0.2));
-    transform:translateX(-50%);
-    border-radius:2px;
+
+  .layer1 { height: 60px; background: linear-gradient(90deg, #ffb347, #ffcc33); bottom: 0; }
+  .layer2 { height: 50px; background: linear-gradient(90deg, #ff66b2, #ff99cc); bottom: 55px; }
+  .layer3 { height: 40px; background: linear-gradient(90deg, #a29bfe, #81ecec); bottom: 105px; }
+
+  .candle {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 12px;
+    height: 40px;
+    background: #fff;
+    border-radius: 6px;
+    transform: translateX(-50%);
+    box-shadow: 0 0 10px #fff;
   }
-  .b1{left:8%; background:linear-gradient(180deg,#ff6b6b,#ff3f6b); animation-delay:0s}
-  .b2{left:22%; background:linear-gradient(180deg,#6bdeff,#2aa7ff); animation-delay:0.6s}
-  .b3{right:18%; background:linear-gradient(180deg,#b58bff,#7a4bff); animation-delay:1.1s}
-  .b4{right:6%; background:linear-gradient(180deg,#9cff88,#50d85a); animation-delay:-0.4s}
-  @keyframes floatBalloon{
-    0%{transform: translateY(0) rotate(-2deg)}
-    50%{transform: translateY(-18px) rotate(2deg)}
-    100%{transform: translateY(0) rotate(-2deg)}
+
+  .flame {
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: radial-gradient(circle at bottom, #ff0, #f00);
+    transform: translateX(-50%);
+    animation: flicker .15s infinite alternate;
   }
-  .confetti-wrap{
-    position:absolute;
-    inset:0;
-    pointer-events:none;
-    overflow:visible;
+
+  @keyframes flicker {
+    from { transform: translateX(-50%) scale(1); opacity: .8; }
+    to { transform: translateX(-50%) scale(1.3); opacity: 1; }
   }
-  .confetti{
-    position:absolute;
-    width:10px;height:14px;
-    border-radius:2px;
-    transform-origin:center;
-    opacity:0.95;
-    animation: conf-drop linear infinite;
+
+  /* Fireworks boom */
+  .boom {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background: transparent;
+    border-radius: 50%;
+    animation: explode 1.2s ease-out forwards;
   }
-  .confetti:nth-child(1){left:8%;top:-20px;background:#ff6b6b;animation-duration:3.8s;animation-delay:0s}
-  .confetti:nth-child(2){left:18%;top:-10px;background:#ffd56b;animation-duration:4.4s;animation-delay:0.2s}
-  .confetti:nth-child(3){left:28%;top:-40px;background:#6bdeff;animation-duration:4.0s;animation-delay:0.1s}
-  .confetti:nth-child(4){left:38%;top:-5px;background:#b58bff;animation-duration:3.6s;animation-delay:0.5s}
-  .confetti:nth-child(5){left:48%;top:-30px;background:#9cff88;animation-duration:4.2s;animation-delay:0.35s}
-  .confetti:nth-child(6){left:58%;top:-25px;background:#ff9ad1;animation-duration:3.9s;animation-delay:0.6s}
-  .confetti:nth-child(7){left:68%;top:-15px;background:#ffd56b;animation-duration:4.6s;animation-delay:0.15s}
-  .confetti:nth-child(8){left:78%;top:-35px;background:#ff6b6b;animation-duration:3.5s;animation-delay:0.4s}
-  .confetti:nth-child(9){left:88%;top:-8px;background:#6bdeff;animation-duration:4.1s;animation-delay:0.72s}
-  .confetti:nth-child(10){left:12%;top:-60px;background:#b58bff;animation-duration:4.5s;animation-delay:1s}
-  .confetti:nth-child(11){left:32%;top:-80px;background:#9cff88;animation-duration:4.0s;animation-delay:0.75s}
-  .confetti:nth-child(12){left:52%;top:-50px;background:#ff9ad1;animation-duration:3.7s;animation-delay:0.9s}
-  .confetti:nth-child(13){left:72%;top:-70px;background:#ffd56b;animation-duration:4.3s;animation-delay:1.2s}
-  .confetti:nth-child(14){left:92%;top:-65px;background:#ff6b6b;animation-duration:4.7s;animation-delay:1.4s}
-  .confetti:nth-child(15){left:4%;top:-90px;background:#6bdeff;animation-duration:3.9s;animation-delay:1.1s}
-  .confetti:nth-child(16){left:24%;top:-110px;background:#b58bff;animation-duration:4.2s;animation-delay:1.3s}
-  .confetti:nth-child(17){left:44%;top:-100px;background:#9cff88;animation-duration:4.0s;animation-delay:1.15s}
-  .confetti:nth-child(18){left:64%;top:-120px;background:#ff9ad1;animation-duration:4.6s;animation-delay:1.05s}
-  .confetti:nth-child(19){left:84%;top:-95px;background:#ffd56b;animation-duration:4.4s;animation-delay:1.25s}
-  .confetti:nth-child(20){left:56%;top:-130px;background:#ff6b6b;animation-duration:4.1s;animation-delay:1.6s}
-  @keyframes conf-drop{
-    0%{transform: translateY(-20vh) rotate(0) scale(1)}
-    60%{transform: translateY(40vh) rotate(140deg) scale(1.05)}
-    100%{transform: translateY(90vh) rotate(300deg) scale(0.98); opacity:0}
+
+  @keyframes explode {
+    0% { transform: scale(0.2); opacity: 1; }
+    80% { transform: scale(1); opacity: 1; box-shadow:
+      0 0 60px #ff0, 0 0 80px #f0f, 0 0 100px #0ff; }
+    100% { opacity: 0; transform: scale(3); }
   }
-  .byline{display:block;text-align:center;margin-top:22px;color:#9aa7bd;font-size:13px}
-  @media (max-width:520px){
-    .scene{gap:14px}
-    .cake{width:140px;height:120px}
-    .balloon{display:none}
+
+  /* Firework particles */
+  .spark {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--color);
+    animation: fly 1.5s linear forwards;
+  }
+
+  @keyframes fly {
+    0% { transform: translate(0,0) scale(1); opacity: 1; }
+    100% { transform: translate(var(--x), var(--y)) scale(0.5); opacity: 0; }
+  }
+
+  /* Confetti */
+  .confetti {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: var(--color);
+    top: -10px;
+    animation: fall linear infinite;
+  }
+
+  @keyframes fall {
+    to {
+      transform: translateY(110vh) rotate(720deg);
+      opacity: 0;
+    }
   }
 </style>
 </head>
 <body>
-  <div class="stage">
-    <h1 class="title">🎉 <span class="spark">Happy Birthday, Bransten!</span> 🎉</h1>
-    <p class="subtitle">Wishing you a day full of wins, laughs, and cake.</p>
-    <div class="scene">
-      <div class="cake">
-        <div class="candles">
-          <div class="candle"><div class="flame"></div></div>
-          <div class="candle"><div class="flame"></div></div>
-          <div class="candle"><div class="flame"></div></div>
-        </div>
-        <div class="layer top"><div class="icing"></div></div>
-        <div class="layer"></div>
-      </div>
-    </div>
-    <span class="balloon b1"></span><span class="balloon b2"></span><span class="balloon b3"></span><span class="balloon b4"></span>
-    <div class="confetti-wrap">
-      <i class='confetti'></i><i class='confetti'></i><i class='confetti'></i><i class='confetti'></i><i class='confetti'></i><i class='confetti'></i><i class='confetti'></i><i class='confetti'></i><i class='confetti'></i><i class='confetti'></i><i class='confetti'></i><i class='confetti'></i><i class='confetti'></i><i class='confetti'></i><i class='confetti'></i><i class='confetti'></i><i class='confetti'></i><i class='confetti'></i><i class='confetti'></i><i class='confetti'></i>
-    </div>
-    <span class="byline">Made with ❤️ by ChatGPT</span>
+
+<h1>🎉 Happy Birthday Bransten! 🎂</h1>
+
+<div class="cake">
+  <div class="layer layer3"></div>
+  <div class="layer layer2"></div>
+  <div class="layer layer1"></div>
+  <div class="candle">
+    <div class="flame"></div>
   </div>
+</div>
+
+<script>
+  // Confetti rain
+  const confColors = ['#ff0', '#ff0080', '#00ffff', '#00ff00', '#ff6600', '#ff3333'];
+  for (let i = 0; i < 150; i++) {
+    const c = document.createElement('div');
+    c.className = 'confetti';
+    c.style.setProperty('--color', confColors[Math.floor(Math.random() * confColors.length)]);
+    c.style.left = Math.random() * 100 + 'vw';
+    c.style.animationDuration = 2 + Math.random() * 3 + 's';
+    c.style.animationDelay = Math.random() * 3 + 's';
+    document.body.appendChild(c);
+  }
+
+  // Fireworks
+  function firework() {
+    const boom = document.createElement('div');
+    boom.className = 'boom';
+    boom.style.left = Math.random() * 100 + 'vw';
+    boom.style.top = Math.random() * 60 + 'vh';
+    document.body.appendChild(boom);
+
+    const colors = ['#ff0', '#ff00ff', '#00ffff', '#ff6600', '#00ff88', '#ff3333'];
+    for (let i = 0; i < 30; i++) {
+      const spark = document.createElement('div');
+      spark.className = 'spark';
+      spark.style.setProperty('--color', colors[Math.floor(Math.random() * colors.length)]);
+      const angle = Math.random() * 2 * Math.PI;
+      const dist = 60 + Math.random() * 60;
+      spark.style.setProperty('--x', `${Math.cos(angle) * dist}px`);
+      spark.style.setProperty('--y', `${Math.sin(angle) * dist}px`);
+      boom.appendChild(spark);
+    }
+
+    setTimeout(() => boom.remove(), 1500);
+  }
+
+  setInterval(firework, 800);
+</script>
+
 </body>
 </html>
